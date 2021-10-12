@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class MinHeap <T extends Comparable<T>>{
+public class minHeap <T extends Comparable<T>>{
     ArrayList<T> minHeap;
     private int size;
     public minHeap(){
