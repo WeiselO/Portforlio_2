@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
-
+//I fixted it
 public class minHeap <T extends Comparable<T>>{
     ArrayList<T> minHeap;
     private int size;
