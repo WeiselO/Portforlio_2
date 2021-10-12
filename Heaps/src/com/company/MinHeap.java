@@ -2,14 +2,19 @@ package com.company;
 
 import java.util.ArrayList;
 //I fixted it!
-public class minHeap <T extends Comparable<T>>{
-    ArrayList<T> minHeap;
+public class MinHeap <T extends Comparable<T>>{
+    ArrayList<T> MinHeap;
     private int size;
-    public minHeap(){
-        this.minHeap= new ArrayList<T>();
+    public MinHeap(){
+        this.MinHeap= new ArrayList<T>();
         this.size=0;
 
     }
+    public boolean isEmpty(){
+        if (size > 0) return false;
+        else return true;
+    }
+
     private int parent (int pos){
         return (pos-1)/2;
     }
@@ -20,13 +25,13 @@ public class minHeap <T extends Comparable<T>>{
         return (pos*2)+2;
     }
     public void swap(int pos1, int pos2){
-        T item1= minHeap.get(pos1);
-        T item2= minHeap.get(pos2);
-        minHeap.set(pos1, item2);
-        minHeap.set(pos2, item1);
+        T item1= MinHeap.get(pos1);
+        T item2= MinHeap.get(pos2);
+        MinHeap.set(pos1, item2);
+        MinHeap.set(pos2, item1);
     }
     public void insert (T item){
-        minHeap.add(item);
+        MinHeap.add(item);
         size++;
         decreaseKey(size-1);
     }
@@ -34,7 +39,7 @@ public class minHeap <T extends Comparable<T>>{
 
     public void decreaseKey(int pos) {
         int currentPos = pos;
-        while (minHeap.get(currentPos).compareTo(minHeap.get(parent(currentPos))) < 0) {
+        while (MinHeap.get(currentPos).compareTo(MinHeap.get(parent(currentPos))) < 0) {
             swap(currentPos, parent(currentPos));
             currentPos = parent(currentPos);
         }
@@ -44,7 +49,7 @@ public class minHeap <T extends Comparable<T>>{
         while(moveDown(currentPos)){
             int rPos =  rightChild(currentPos);
             int lPos = leftChild(currentPos);
-            if (rPos<size && minHeap.get(rPos).compareTo(minHeap.get(lPos))<0){
+            if (rPos<size && MinHeap.get(rPos).compareTo(MinHeap.get(lPos))<0){
                 swap(rPos,currentPos);
                 currentPos=rPos;
             }else{
@@ -56,17 +61,17 @@ public class minHeap <T extends Comparable<T>>{
 
     }
     private boolean moveDown(int pos){
-        boolean leftSmaller=leftChild(pos)<size && (minHeap.get(leftChild(pos)).compareTo(minHeap.get(pos))<0);
-        boolean rightSmaller=rightChild(pos)<size && (minHeap.get(rightChild(pos)).compareTo(minHeap.get(pos))<0);
+        boolean leftSmaller=leftChild(pos)<size && (MinHeap.get(leftChild(pos)).compareTo(MinHeap.get(pos))<0);
+        boolean rightSmaller=rightChild(pos)<size && (MinHeap.get(rightChild(pos)).compareTo(MinHeap.get(pos))<0);
         return leftSmaller || rightSmaller;
 
     }
     public T viewMin(){
-        return minHeap.get(0);
+        return MinHeap.get(0);
     }
     public T extractMin(){
-        T min = minHeap.get(0);
-        minHeap.set(0,minHeap.get(size-1));
+        T min = MinHeap.get(0);
+        MinHeap.set(0,MinHeap.get(size-1));
         size--;
         increaseKey(0);
         return min;
