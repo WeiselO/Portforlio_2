@@ -2,6 +2,7 @@ package com.company;
 // Adjacency Matrix representation in Java
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Graph {
@@ -39,22 +40,35 @@ public class Graph {
         int[] distance = new int[adjMatrix.length];
         int[] prev = new int[adjMatrix.length];
         MinHeap<Pair> Q = new MinHeap<>();
+        ArrayList<Pair> vertexPairs = new ArrayList<>();
+
         Arrays.fill(distance, Integer.MAX_VALUE); //Making all distances infinite.
         Arrays.fill(prev,-1); //Making a start value for prev
         if (adjMatrix.length>0) distance[0] = 0;
         for (int i = 0; i < adjMatrix.length; i++) {
-            Q.insert(new Pair(distance[i],i)); //Inserting the arrays into pairs, that are then added to the minheap
+            vertexPairs.add(new Pair(distance[i],i)); //Inserting the pairs into an array
+            Q.insert(vertexPairs.get(i)); //adding the pairs to the MinHeap.
         }
+        int MST = 0;
         while(!Q.isEmpty()){
             Pair u = Q.extractMin();
             for (int v = 0; v < adjMatrix.length; v++) {
                 if (adjMatrix[u.index][v]==1 && adjMatrix[u.index][v]<distance[v]){
                     distance[v]=adjMatrix[u.index][v];
                     prev[v]=u.index;
+                    int pos = Q.getPosition(vertexPairs.get(v));
+                    vertexPairs.get(v).distance=adjMatrix[u.index][v];
+                    Q.decreaseKey(pos);
                 }
                 
             }
+            MST+=distance[u.index];
         }
+        System.out.println("Minimum spanning tree");
+        for (int i = 0; i < adjMatrix.length; i++) {
+            System.out.println("parent: "+prev[i]+" to "+i+" has distance: "+distance[i]);
+        }
+
 
     }
 
