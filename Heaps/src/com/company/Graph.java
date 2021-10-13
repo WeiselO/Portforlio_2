@@ -60,16 +60,15 @@ public class Graph {
                     vertexPairs.get(v).distance=adjMatrix[u.index][v];
                     Q.decreaseKey(pos);
                 }
-                
             }
             MST+=distance[u.index];
         }
         System.out.println("Minimum spanning tree");
         for (int i = 0; i < adjMatrix.length; i++) {
-            System.out.println("parent: "+prev[i]+" to "+i+" has distance: "+distance[i]);
+            if (prev[i]>=0){
+                System.out.println("parent: "+prev[i]+" to "+i+" has distance: "+distance[i]);
+            }
         }
-
-
     }
 
     class Pair implements Comparable<Pair>{
@@ -93,8 +92,15 @@ public class Graph {
         graph.addEdge(0,4,3);
         graph.addEdge(0,2,5);
         graph.addEdge(1,4,1);
+        graph.addEdge(2,4,1);
+        graph.addEdge(3,1,1);
+        graph.addEdge(5,6,3);
+        graph.addEdge(4,5,1);
+        graph.addEdge(6,3,3);
+        graph.addEdge(1,6,1);
 
         graph.print();
+        graph.MSTPrims();
     }
 
 }

@@ -35,8 +35,8 @@ public class MinHeap <T extends Comparable<T>>{
         T item2= MinHeap.get(pos2);
         MinHeap.set(pos1, item2);
         MinHeap.set(pos2, item1);
-        positionTable.put(item1,pos2);
-        positionTable.put(item2,pos1); //flag: 35 min
+        positionTable.put(MinHeap.get(pos1),pos1); //flag: 35 min
+        positionTable.put(MinHeap.get(pos2),pos2);
     }
     public void insert (T item){
         MinHeap.add(item);
