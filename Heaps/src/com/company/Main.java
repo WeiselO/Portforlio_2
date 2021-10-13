@@ -1,11 +1,10 @@
 package com.company;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        MinHeap<String> myMinHeap=new MinHeap<String>();
+        MinHeap<String> myMinHeap=new MinHeap<>();
         myMinHeap.insert("Albert");
         myMinHeap.insert("Line");
         myMinHeap.insert("Benjamin");
