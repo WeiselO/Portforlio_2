@@ -2,9 +2,8 @@ package com.company;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MinHeap <T extends Comparable<T>>{
+public class MinHeap<T extends Comparable<T>>{
     HashMap<T, Integer> positionTable = new HashMap<>();
-
     //root = 0
     ArrayList<T> MinHeap;
     private int size;
@@ -20,7 +19,6 @@ public class MinHeap <T extends Comparable<T>>{
     public int getPosition(T item){
         return positionTable.get(item);
     }
-
     private int parent (int pos){
         return (pos-1)/2;
     }
@@ -40,11 +38,10 @@ public class MinHeap <T extends Comparable<T>>{
     }
     public void insert (T item){
         MinHeap.add(item);
-        size++;
         positionTable.put(item,size); //BEFORE you change the size, you log the items position.
+        size++;
         decreaseKey(size-1);
     }
-
     public void decreaseKey(int pos) {
         int currentPos = pos;
         while (MinHeap.get(currentPos).compareTo(MinHeap.get(parent(currentPos))) < 0) {
