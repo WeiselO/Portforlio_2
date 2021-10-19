@@ -63,7 +63,7 @@ public class Graph {
                     }
                 }
                 MSTtotal += distance[from];
-                String printout = "Edge: ="+prev[from]+ " To: " + from + " has weight:" + distance[from];
+                String printout = "Edge: "+prev[from]+ " To: " + from + " = " + distance[from];
                 MST.add(printout);
                 //System.out.println("Edge: " + prev[from] + " To: " + from + " has weight:" + distance[from]);
                 //the first prev[from] = -1, because -1 is inital value.
