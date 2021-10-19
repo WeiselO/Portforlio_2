@@ -34,17 +34,12 @@ public class Cities {
         //Defining a print method for MSTPrims array-list.
         for (int i = 0; i < numberOfCities; i++) {
             String myString = MST.get(i);
-            String newString = "";
             for (int j = numberOfCities-1; j > -1; j--) {
-                newString = myString.replaceAll("Edge: "+j,"Distance from: "+Cities.get(j));
-                if (newString.indexOf(Cities.get(j)) > -1) break;
+                myString = myString.replaceAll("Edge: "+j,"Distance from: "+Cities.get(j));
+                myString = myString.replaceAll("To: "+j,"--> "+Cities.get(j));
             }
-            for (int j = numberOfCities-1; j > -1; j--) {
-                newString = newString.replaceAll("To: "+j,"--> "+Cities.get(j));
-            }
-            newString = newString.replaceAll("Edge: "+-1,"Distance from: Starting Point");
-            System.out.println(newString);
-
+            myString = myString.replaceAll("Edge: "+-1,"Distance from: Starting Point");
+            System.out.println(myString);
         }
     }
 
