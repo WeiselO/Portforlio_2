@@ -5,42 +5,74 @@ import java.util.List;
 
 public class Cities {
     ArrayList<String> Cities;
+    int numberOfCities;
+    private Graph cityMap;
 
     public Cities(){
         this.Cities= new ArrayList<>();
+        this.numberOfCities = 10; //Having a problem with this. Taking a break
+        this.cityMap = new Graph(numberOfCities);
     }
 
     public void add(String cityName){
         Cities.add(cityName);
+        numberOfCities++;
     }
 
-    public String getName(int index){
-        return Cities.get(index);
-    }
-    public int getIndex(String cityName){
-        //To be filled
-        return 0;
+    public void add(String fromCity,String toCity, int distance){
+        if (Cities.indexOf(fromCity)==-1)
+            Cities.add(fromCity);
+        if (Cities.indexOf(toCity)==-1)
+            Cities.add(toCity);
+        addDistance(fromCity,toCity,distance);
     }
 
+    public void addDistance(String fromCity, String toCity, int distance){
+        if (Cities.indexOf(fromCity) > 0 && Cities.indexOf(toCity) > 0){
+            cityMap.addEdge(Cities.indexOf(fromCity),Cities.indexOf(toCity),distance);
+        }
+    }
+    public void getMST(){
+        cityMap.MSTPrims();
+    }
 
     public static void main(String args[]) {
         Cities DanishCities = new Cities();
-        DanishCities.add("Eskildstrup");
-        DanishCities.add("Haslev");
-        DanishCities.add("Holbæk");
-        DanishCities.add("Jægerspris");
-        DanishCities.add("Kalundborg");
-        DanishCities.add("Korsør");
-        DanishCities.add("Køge");
-        DanishCities.add("Maribo");
-        DanishCities.add("Nakskov");
-        DanishCities.add("Nykøbing F");
-        DanishCities.add("Næstved");
-        DanishCities.add("Ringsted");
-        DanishCities.add("Roskilde");
-        DanishCities.add("Slagelse");
-        DanishCities.add("Sorø");
-        DanishCities.add("Vordingborg");
+        //Adding cities + distances in km
+        DanishCities.add("Eskildstrup","Maribo",28);
+        DanishCities.add("Eskildstrup","NykøbingF",13);
+        DanishCities.add("Eskildstrup","Vordingborg",25);
+        DanishCities.add("Eskildstrup","Maribo",28);
+        DanishCities.add("Haslev","Korsør",60);
+
+
+//        DanishCities.add("Eskildstrup","Maribo",28);
+//        DanishCities.add("Eskildstrup","NykøbingF",13);
+//        DanishCities.add("Eskildstrup","Vordingborg",25);
+//        DanishCities.add("Haslev","Korsør",60);
+//        DanishCities.add("Haslev","Køge",24);
+//        DanishCities.add("Haslev","Næstved",25);
+//        DanishCities.add("Haslev","Ringsted",19);
+//        DanishCities.add("Haslev","Roskilde",47);
+//        DanishCities.add("Haslev","Slagelse",48);
+//        DanishCities.add("Haslev","Sorø",34);
+//        DanishCities.add("Haslev","Vordingborg",40);
+//
+//        //herefter kun den første af hvert steds connections.
+//        DanishCities.add("Holbæk","Jægerspris",34);
+//        DanishCities.add("Jægerspris","Korsør",94);
+//        DanishCities.add("Kalundborg","Ringsted",62);
+//        DanishCities.add("Korsør","Næstved",45);
+//        DanishCities.add("Køge","Næstved",45);
+//        DanishCities.add("Maribo","Nakskov",27);
+//        DanishCities.add("Næstved","Roskilde",57);
+//        DanishCities.add("Ringsted","Roskilde",31);
+//        DanishCities.add("Slagelse","Sorø",14);
+
+
+        System.out.println(DanishCities.Cities);
+
+
     }
 }
 
