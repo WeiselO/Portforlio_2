@@ -28,8 +28,15 @@ public class Cities {
             cityMap.addEdge(Cities.indexOf(toCity),Cities.indexOf(fromCity),distance);
         }
     }
+
     public void getMST(){
-        cityMap.MSTPrims();
+        ArrayList<String> MST = cityMap.MSTPrims();
+        for (int i = 0; i < numberOfCities-1; i++) {
+            String cityName = Cities.get(i);
+            String myString = MST.get(i);
+            myString.replace(i+"", Cities.get(i)+"");
+            System.out.println(myString);
+        }
     }
 
     public static void main(String args[]) {
@@ -58,6 +65,7 @@ public class Cities {
         DanishCities.add("Ringsted","Roskilde",31);
         DanishCities.add("Slagelse","Sorø",14);
 
+        System.out.println(DanishCities.Cities.get(0));
         DanishCities.getMST();
 
         System.out.println(DanishCities.Cities);

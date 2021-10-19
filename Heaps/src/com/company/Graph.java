@@ -1,4 +1,5 @@
 package com.company;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Graph {
@@ -27,45 +28,9 @@ public class Graph {
         }
     }
 
-    public void MSTPrimsOriginal() {
-        int[] distance = new int[numVertices];
-        int[] prev = new int[numVertices];
-        MinHeap<Pair> Q = new MinHeap<>();
-        Pair[] vertexPairs = new Pair[numVertices];
-        //ArrayList<Pair> vertexPairs = new ArrayList<>();
-        for (int i = 0; i < numVertices; i++) {
-            distance[i] = Integer.MAX_VALUE;
-            prev[i] = -1;
-            Pair newPair = new Pair(distance[i], i);
-            Q.insert(newPair);
-            vertexPairs[i] = newPair;
-        } //Making all values in distance = infinite. Could be done with an arraylist and a fill-function.
-        //Arrays.fill(distance, Integer.MAX_VALUE);
-        if (numVertices > 0) {
-            distance[0] = 0; //Starting position is set as 0.
-            vertexPairs[0].distance = 0; //Starting value is 0
-            int pos = Q.getPosition(vertexPairs[0]); //Getting the position of the starting element
-            Q.decreaseKey(pos); //Fixing the minHeap, since we changed a Pair to have a weight of 0.
-            int MSTtotal = 0;
-            while (!Q.isEmpty()) {
-                Pair u = Q.extractMin(); //Getting the next minimum distance
-                int from = u.index;
-                for (int to = 0; to < numVertices; to++) {
-                    if (adjMatrixHasEdge[from][to] && adjMatrixWeight[from][to] < distance[to]) { //If it has value and that value is smaller than infinity
-                        distance[to] = adjMatrixWeight[from][to];
-                        prev[to] = from;
-                        pos = Q.getPosition(vertexPairs[to]); //initializing our new edge as our new position
-                        vertexPairs[to].distance = distance[to]; //updating the value of the vertexPairs to match distance
-                        Q.decreaseKey(pos); //Fixing the minHeap.
-                    }
-                }
-                MSTtotal += distance[from];
-                System.out.println("Edge: " + prev[from] + " To: " + from + " has weight:" + distance[from]);
-            }
-            System.out.println("MST size is: "+MSTtotal);
-        }
-    } //to be deleted.
-    public void MSTPrims() {
+    public ArrayList<String> MSTPrims() {
+        ArrayList<String> MST = new ArrayList<>();
+
         int[] distance = new int[numVertices];
         Arrays.fill(distance, Integer.MAX_VALUE); //Making all initial values in distance = "infinite".
 
@@ -98,13 +63,15 @@ public class Graph {
                     }
                 }
                 MSTtotal += distance[from];
-                System.out.println("Edge: " + prev[from] + " To: " + from + " has weight:" + distance[from]);
+                String printout = "Edge: " + prev[from] + " To: " + from + " has weight:" + distance[from];
+                MST.add(printout);
+                //System.out.println("Edge: " + prev[from] + " To: " + from + " has weight:" + distance[from]);
                 //the first prev[from] = -1, because -1 is inital value.
             }
             System.out.println("MST size is: "+MSTtotal);
         }
+        return MST;
     }
-
 
 
     class Pair implements Comparable<Pair>{
