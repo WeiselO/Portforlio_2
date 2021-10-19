@@ -31,15 +31,17 @@ public class Cities {
 
     public void getMST(){
         ArrayList<String> MST = cityMap.MSTPrims();
-        for (int i = 0; i < numberOfCities-1; i++) {
-            String cityName = Cities.get(i);
+        for (int i = 0; i < numberOfCities; i++) {
             String myString = MST.get(i);
-            myString.replace(i+"", Cities.get(i)+"");
-            System.out.println(myString);
+            String newString = "";
+            for (int j = 0; j < numberOfCities; j++) {
+                    newString = myString.replaceAll("="+j,"Hello");
+                    System.out.println(newString);
+            }
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Cities DanishCities = new Cities(16);
         //Adding cities + distances in km
         DanishCities.add("Eskildstrup","Maribo",28);
