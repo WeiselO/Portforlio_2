@@ -33,11 +33,7 @@ public class Cities {
         ArrayList<String> MST = cityMap.MSTPrims();
         for (int i = 0; i < numberOfCities; i++) {
             String myString = MST.get(i);
-            String newString = "";
-            for (int j = 0; j < numberOfCities; j++) {
-                    newString = myString.replaceAll("="+j,"Hello");
-                    System.out.println(newString);
-            }
+            System.out.println(myString);
         }
     }
 
