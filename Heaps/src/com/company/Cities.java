@@ -25,7 +25,6 @@ public class Cities {
     public void addDistance(String fromCity, String toCity, int distance){
         if (Cities.indexOf(fromCity) >= 0 && Cities.indexOf(toCity) >= 0){
             cityMap.addEdge(Cities.indexOf(fromCity),Cities.indexOf(toCity),distance);
-            cityMap.addEdge(Cities.indexOf(toCity),Cities.indexOf(fromCity),distance);
         }
     }
 

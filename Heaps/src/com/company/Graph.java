@@ -15,7 +15,9 @@ public class Graph {
 
     public void addEdge (int from, int to, int weight){
         this.adjMatrixHasEdge[from][to]=true;
+        this.adjMatrixHasEdge[to][from]=true;
         this.adjMatrixWeight[from][to]=weight;
+        this.adjMatrixWeight[to][from]=weight;
     }
 
     public void print(){
@@ -44,6 +46,7 @@ public class Graph {
             Q.insert(newPair);
             vertexPairs[i] = newPair;
         } //Initializes a minHeap of size = numVerticies, with Pair-objects. Adds every pair to the vertexParis-array.
+
         if (numVertices > 0) {
             distance[0] = 0; //Starting value is 0.
             vertexPairs[0].distance = 0; //Starting value is 0
@@ -73,7 +76,6 @@ public class Graph {
         }
         return MST;
     }
-
 
     class Pair implements Comparable<Pair>{
         Integer distance;

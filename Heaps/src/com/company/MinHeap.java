@@ -10,7 +10,6 @@ public class MinHeap<T extends Comparable<T>>{
     public MinHeap(){
         this.MinHeap= new ArrayList<>();
         this.size=0;
-
     }
     public boolean isEmpty(){
         if (size > 0) return false;
