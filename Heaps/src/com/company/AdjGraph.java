@@ -106,7 +106,6 @@ class Vertex implements Comparable<Vertex>{
         this.prev = prev;
     }
 }
-
 class Edge{
     Integer weight;
     Vertex from;
@@ -121,33 +120,33 @@ class Edge{
 
     public static void main(String[] args) {
         AdjGraph MyGraph=new AdjGraph();
-        Vertex a = new Vertex("0");
-        Vertex b = new Vertex("1");
-        Vertex c = new Vertex( "2");
-        Vertex d = new Vertex("3");
-        Vertex e = new Vertex("4");
-        Vertex f = new Vertex( "5");
-        Vertex g = new Vertex("6");
-        MyGraph.addVertex(a);
-        MyGraph.addVertex(b);
-        MyGraph.addVertex(c);
-        MyGraph.addVertex(d);
-        MyGraph.addVertex(e);
-        MyGraph.addVertex(f);
-        MyGraph.addVertex(g);
-        MyGraph.addEdge(a,b,1);
-        MyGraph.addEdge(a,c, 5);
-        MyGraph.addEdge(a,e,3);
-        MyGraph.addEdge(b,e,1);
-        MyGraph.addEdge(b,f,7);
-        MyGraph.addEdge(c,d,1);
-        MyGraph.addEdge(d,e,1);
-        MyGraph.addEdge(d,g, 1);
-        MyGraph.addEdge(e,c, 1);
-        MyGraph.addEdge(e,d,3);
-        MyGraph.addEdge(e,f, 3);
-        MyGraph.addEdge(e,g,4);
-        MyGraph.addEdge(f,g, 1);
+        Vertex Eskildstrup = new Vertex("Eskildstrup");
+        Vertex Maribo = new Vertex("Maribo");
+        Vertex NykøbingF = new Vertex( "NykøbingF");
+        Vertex Vordingborg = new Vertex("Vordingborg");
+        Vertex Haslev = new Vertex("Haslev");
+        Vertex Korsør = new Vertex( "Korsør");
+        Vertex Køge = new Vertex("Køge");
+        MyGraph.addVertex(Eskildstrup);
+        MyGraph.addVertex(Maribo);
+        MyGraph.addVertex(NykøbingF);
+        MyGraph.addVertex(Vordingborg);
+        MyGraph.addVertex(Haslev);
+        MyGraph.addVertex(Korsør);
+        MyGraph.addVertex(Køge);
+        MyGraph.addEdge(Eskildstrup,Maribo,28);
+        MyGraph.addEdge(Eskildstrup,NykøbingF, 13);
+        MyGraph.addEdge(Eskildstrup,Vordingborg,25);
+        MyGraph.addEdge(Haslev,Korsør,60);
+        MyGraph.addEdge(Haslev,Køge,24);
+        MyGraph.addEdge(Haslev,Vordingborg,1);
+        MyGraph.addEdge(Haslev,Haslev,1);
+        MyGraph.addEdge(Haslev,Køge, 1);
+        MyGraph.addEdge(Haslev,NykøbingF, 1);
+        MyGraph.addEdge(Haslev,Vordingborg,3);
+        MyGraph.addEdge(Haslev,Korsør, 3);
+        MyGraph.addEdge(Haslev,Køge,4);
+        MyGraph.addEdge(Haslev,Køge, 1);
         MyGraph.PrintGraph();
         MyGraph.MSTPrims();
     }
