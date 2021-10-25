@@ -10,12 +10,12 @@ public class AdjGraph {
     public void addVertex(Vertex v){
         vertices.add(v);
     }
-    public void addEdge(Vertex f,Vertex t, Integer w){
-        if(!(vertices.contains(f) && vertices.contains(t)) ) {
+    public void addEdge(Vertex from,Vertex to, Integer weight){
+        if(!(vertices.contains(from) && vertices.contains(to)) ) {
             System.out.println("Vertex not in graph");
             return;
         }
-        Edge e=new Edge(f, t,w);
+        Edge e=new Edge(from, to,weight);
     }
     public  void PrintGraph(){
         for (int i=0;i<vertices.size();i++)
