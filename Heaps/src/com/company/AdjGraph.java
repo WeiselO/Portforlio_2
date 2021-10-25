@@ -15,6 +15,7 @@ public class AdjGraph {
             System.out.println("Vertex not in graph");
             return;
         }
+
         Edge e=new Edge(from, to,weight);
     }
     public  void PrintGraph(){
