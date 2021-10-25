@@ -80,6 +80,7 @@ public class MinHeap<T extends Comparable<T>>{
         size--;
         increaseKey(0);
         return min;
+        //test
     }
 }
 
