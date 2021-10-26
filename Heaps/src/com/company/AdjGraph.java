@@ -44,6 +44,7 @@ public class AdjGraph {
             int position = Q.getPosition(vertices.get(start)); //getting the position of the starting vertex
             Q.decreaseKey(position); //Fixing the minheap since we changed the value of the starting vertex.
             int MSTtotal = 0;
+            System.out.println("Minimum Spanning Tree:");
             while (!Q.isEmpty()){
                 Vertex u = Q.extractMin(); //Taking the smallest u.
                 for (int uOutEdgeIndex = 0; uOutEdgeIndex < u.OutEdges.size(); uOutEdgeIndex++) {
@@ -62,6 +63,7 @@ public class AdjGraph {
                 u.visited = true;
             }
             System.out.println("MST size is: "+MSTtotal+" km.");
+            System.out.println("MST price is: "+ MSTtotal*100000 +"DKK");
         }
     }
 }
