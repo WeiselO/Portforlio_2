@@ -32,7 +32,7 @@ public class MinHeap<T extends Comparable<T>>{
         T item2= MinHeap.get(pos2);
         MinHeap.set(pos1, item2);
         MinHeap.set(pos2, item1);
-        positionTable.put(MinHeap.get(pos1),pos1); //flag: 35 min
+        positionTable.put(MinHeap.get(pos1),pos1);
         positionTable.put(MinHeap.get(pos2),pos2);
     }
     public void insert (T item){
@@ -61,8 +61,6 @@ public class MinHeap<T extends Comparable<T>>{
                 currentPos=lPos;
             }
         }
-
-
     }
     private boolean moveDown(int pos){
         boolean leftSmaller=leftChild(pos)<size && (MinHeap.get(leftChild(pos)).compareTo(MinHeap.get(pos))<0);
@@ -70,9 +68,7 @@ public class MinHeap<T extends Comparable<T>>{
         return leftSmaller || rightSmaller;
 
     }
-    public T viewMin(){
-        return MinHeap.get(0);
-    }
+
     public T extractMin(){
         T min = MinHeap.get(0);
         MinHeap.set(0,MinHeap.get(size-1));
@@ -80,7 +76,6 @@ public class MinHeap<T extends Comparable<T>>{
         size--;
         increaseKey(0);
         return min;
-        //test
     }
 }
 
