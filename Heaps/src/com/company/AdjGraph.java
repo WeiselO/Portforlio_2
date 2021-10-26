@@ -1,7 +1,5 @@
 package com.company;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AdjGraph {
     ArrayList<Vertex> vertices;
@@ -16,8 +14,8 @@ public class AdjGraph {
             System.out.println("Vertex not in graph");
             return;
         }
-        Edge e =new Edge(from, to, weight);
-        Edge e2=new Edge(to, from, weight);
+        Edge edgeFromTo = new Edge(from, to, weight);
+        Edge edgeToFrom = new Edge(to, from, weight);
     }
 
     public  void PrintGraph(){
@@ -57,11 +55,13 @@ public class AdjGraph {
                         Q.decreaseKey(pos);
                     }
                 }
-                System.out.println(u.dist);
+                if (u.prev != null){
+                    System.out.println("Distance from "+u.prev.name+" to "+u.name+" is "+u.dist+" km.");
+                }
                 MSTtotal += u.dist;
                 u.visited = true;
             }
-            System.out.println("MST size is: "+MSTtotal);
+            System.out.println("MST size is: "+MSTtotal+" km.");
         }
     }
 }
@@ -89,17 +89,8 @@ class Vertex implements Comparable<Vertex>{
             return 1;
         return 0;
     }
-
-    public Integer getDist() {
-        return dist;
-    }
-
     public void setDist(Integer dist) {
         this.dist = dist;
-    }
-
-    public Vertex getPrev() {
-        return prev;
     }
 
     public void setPrev(Vertex prev) {
@@ -115,11 +106,6 @@ class Edge{
         this.to=to;
         this.weight=cost;
         this.from.addOutEdge(this);
-    }
-
-
-    public static void main(String[] args) {
-
     }
 }
 
