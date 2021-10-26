@@ -1,5 +1,4 @@
 package com.company;
-
 import java.util.ArrayList;
 
 class Vertex implements Comparable<Vertex>{
@@ -15,7 +14,6 @@ class Vertex implements Comparable<Vertex>{
     public void addOutEdge(Edge e) {
         OutEdges.add(e);
     }
-
 
     @Override
     public int compareTo(Vertex o) {

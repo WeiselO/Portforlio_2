@@ -1,5 +1,4 @@
 package com.company;
-
 public class Edge {
     Integer weight;
     Vertex from;
