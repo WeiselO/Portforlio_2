@@ -4,7 +4,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Creating the Adjacency Graph
         AdjGraph MyGraph=new AdjGraph();
+
+        // Creating all Verticies
         Vertex Eskildstrup = new Vertex("Eskildstrup");
         Vertex Haslev = new Vertex("Haslev");
         Vertex Holbæk = new Vertex("Holbæk");
@@ -21,6 +24,8 @@ public class Main {
         Vertex Slagelse = new Vertex("Slagelse");
         Vertex Sorø = new Vertex("Sorø");
         Vertex Vordingborg = new Vertex("Vordingborg");
+
+        // Adding all the Verticies to our graph
         MyGraph.addVertex(Eskildstrup);
         MyGraph.addVertex(Haslev);
         MyGraph.addVertex(Holbæk);
@@ -37,6 +42,8 @@ public class Main {
         MyGraph.addVertex(Slagelse);
         MyGraph.addVertex(Sorø);
         MyGraph.addVertex(Vordingborg);
+
+        // Adding the edges and their weights
         MyGraph.addEdge(Eskildstrup,Maribo,28);
         MyGraph.addEdge(Eskildstrup,NykøbingF, 13);
         MyGraph.addEdge(Eskildstrup,Vordingborg,25);
@@ -81,6 +88,8 @@ public class Main {
         MyGraph.addEdge(Ringsted,Sorø, 15);
         MyGraph.addEdge(Ringsted,Vordingborg, 58);
         MyGraph.addEdge(Slagelse,Sorø, 14);
+
+        // Priting the graph and then running Prims-method, which prints the MST
         MyGraph.PrintGraph();
         MyGraph.MSTPrims();
     }

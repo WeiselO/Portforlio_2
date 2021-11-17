@@ -3,12 +3,17 @@ import java.util.ArrayList;
 
 public class AdjGraph {
     ArrayList<Vertex> vertices;
+
     public AdjGraph(){
         vertices=new ArrayList<Vertex>();
     }
+
+    // Adds a Vertex
     public void addVertex(Vertex v){
         vertices.add(v);
     }
+
+    // Adds an Edge in both directions
     public void addEdge(Vertex from,Vertex to, Integer weight){
         if(!(vertices.contains(from) && vertices.contains(to)) ) {
             System.out.println("Vertex not in graph");
@@ -18,6 +23,7 @@ public class AdjGraph {
         Edge edgeToFrom = new Edge(to, from, weight);
     }
 
+    //Prints our AdjGraph
     public  void PrintGraph(){
         for (int i=0;i<vertices.size();i++){
             System.out.println(" From Vertex: "+ vertices.get(i).name);
@@ -30,6 +36,7 @@ public class AdjGraph {
         }
     }
 
+    // Calculates and prints the MSP for the AdjGraph
     public void MSTPrims() {
         MinHeap<Vertex> Q = new MinHeap<>();
         for (int vertex = 0; vertex < this.vertices.size(); vertex++) {

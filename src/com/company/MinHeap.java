@@ -15,6 +15,8 @@ public class MinHeap<T extends Comparable<T>>{
         if (size > 0) return false;
         else return true;
     }
+
+    // Returns the position of an item in our positionTable.
     public int getPosition(T item){
         return positionTable.get(item);
     }
@@ -27,20 +29,26 @@ public class MinHeap<T extends Comparable<T>>{
     private int rightChild (int pos){
         return (pos*2)+2;
     }
+
+    // Swaps two values in our minHeap and updates the positionTable.
     public void swap(int pos1, int pos2){
-        T item1= MinHeap.get(pos1);
-        T item2= MinHeap.get(pos2);
+        T item1 = MinHeap.get(pos1);
+        T item2 = MinHeap.get(pos2);
         MinHeap.set(pos1, item2);
         MinHeap.set(pos2, item1);
         positionTable.put(MinHeap.get(pos1),pos1);
         positionTable.put(MinHeap.get(pos2),pos2);
     }
+
+    // Inserts a value into our minHeap and positionTable
     public void insert (T item){
         MinHeap.add(item);
         positionTable.put(item,size); //BEFORE you change the size, you log the items position.
         size++;
         decreaseKey(size-1);
     }
+
+    // Updates the minHeap by "bubbling up" the values in the minHeap
     public void decreaseKey(int pos) {
         int currentPos = pos;
         while (MinHeap.get(currentPos).compareTo(MinHeap.get(parent(currentPos))) < 0) {
@@ -48,6 +56,8 @@ public class MinHeap<T extends Comparable<T>>{
             currentPos = parent(currentPos);
         }
     }
+
+    // Updates the minHeap by "bubbling down" the values in the minHeap.
     public void increaseKey(int pos){
         int currentPos=pos;
         while(moveDown(currentPos)){
@@ -62,6 +72,8 @@ public class MinHeap<T extends Comparable<T>>{
             }
         }
     }
+
+    //Returns true if
     private boolean moveDown(int pos){
         boolean leftSmaller=leftChild(pos)<size && (MinHeap.get(leftChild(pos)).compareTo(MinHeap.get(pos))<0);
         boolean rightSmaller=rightChild(pos)<size && (MinHeap.get(rightChild(pos)).compareTo(MinHeap.get(pos))<0);
@@ -69,6 +81,7 @@ public class MinHeap<T extends Comparable<T>>{
 
     }
 
+    // Extracts the minimum value
     public T extractMin(){
         T min = MinHeap.get(0);
         MinHeap.set(0,MinHeap.get(size-1));

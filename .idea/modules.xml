@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Heaps/Heaps.iml" filepath="$PROJECT_DIR$/Heaps/Heaps.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Portforlio_2.iml" filepath="$PROJECT_DIR$/.idea/Portforlio_2.iml" />
     </modules>
   </component>

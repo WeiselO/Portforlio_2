@@ -7,10 +7,13 @@ class Vertex implements Comparable<Vertex>{
     Integer dist= Integer.MAX_VALUE;
     Vertex prev= null;
     boolean visited = false;
+
     public Vertex(String id){
         name=id;
         OutEdges=new ArrayList<Edge>();
     }
+
+    //Adds an OutEdge, used in our Edge-class
     public void addOutEdge(Edge e) {
         OutEdges.add(e);
     }
