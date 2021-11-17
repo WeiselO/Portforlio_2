@@ -73,7 +73,7 @@ public class MinHeap<T extends Comparable<T>>{
         }
     }
 
-    //Returns true if
+    //Returns true if either leftSmaller OR rightSmaller returns true, but only returns false if both returns false.
     private boolean moveDown(int pos){
         boolean leftSmaller=leftChild(pos)<size && (MinHeap.get(leftChild(pos)).compareTo(MinHeap.get(pos))<0);
         boolean rightSmaller=rightChild(pos)<size && (MinHeap.get(rightChild(pos)).compareTo(MinHeap.get(pos))<0);
